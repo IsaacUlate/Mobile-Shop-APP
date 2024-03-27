@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Tienda" Class="conexionLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.20.16.14;Initial Catalog=Tienda;User ID=sistemas" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TiendaConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.SP_ACTUALIZARPRODUCTO" Method="SP_ACTUALIZARPRODUCTO">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaVencimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="descripcion" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ACTUALIZARUSUARIO" Method="SP_ACTUALIZARUSUARIO">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="correo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_DELETEPRODUCTOS" Method="SP_DELETEPRODUCTOS">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_DELETEUSUARIO" Method="SP_DELETEUSUARIO">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INSERTARORDEN" Method="SP_INSERTARORDEN">
+    <Parameter Name="direccionEnvio" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="precioTotal" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="returnId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INSERTARPAGO" Method="SP_INSERTARPAGO">
+    <Parameter Name="FechaPago" Parameter="fechaPago" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="IdProducto" Parameter="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdUsuario" Parameter="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOrden" Parameter="idOrden" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdMetodoPago" Parameter="idMetodoPago" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INSERTARPRODUCTO" Method="SP_INSERTARPRODUCTO">
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="precio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="cantidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaVencimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="descripcion" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="returnId" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INSERTARUSUARIO" Method="SP_INSERTARUSUARIO">
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="correo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_Login" Method="SP_Login">
+    <Parameter Name="usuario" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="contrasena" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="SP_LoginResult">
+      <Column Name="IdUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreUsuario" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SELECCIONARPRODUCTOMARCA" Method="SP_SELECCIONARPRODUCTOMARCA">
+    <Parameter Name="MARCA" Parameter="mARCA" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_SELECCIONARPRODUCTOMARCAResult">
+      <Column Name="IdProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVencimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdMarca" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SELECCIONARPRODUCTOS" Method="SP_SELECCIONARPRODUCTOS">
+    <ElementType Name="SP_SELECCIONARPRODUCTOSResult">
+      <Column Name="IdProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVencimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdMarca" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SELECCIONARPRODUCTOTIPO" Method="SP_SELECCIONARPRODUCTOTIPO">
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_SELECCIONARPRODUCTOTIPOResult">
+      <Column Name="IdProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaVencimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdMarca" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
